@@ -12,10 +12,11 @@
       알림창임
       <button onclick="알림창다루기('none');">닫기</button>
     </div>
-    <button onclick="알림창다루기('아이디입력하세요');">버튼1</button>
-    <button onclick="알림창다루기('비번입력하세요');">버튼2</button>
+    <button class="alert-id">버튼1</button>
+    <button class="alert-password">버튼2</button>
     <script>
       let flag = 0;
+
       function 알림창다루기(파라미터) {
         if (flag == 0) {
           document.getElementById("alert").style.display = "block";
@@ -26,6 +27,17 @@
         }
         document.getElementById("alert").innerText = 파라미터;
       }
+
+      document
+        .getElementsByClassName("alert-id")[0]
+        .addEventListener("click", () => {
+          알림창다루기("아이디입력하셈");
+        });
+      document
+        .getElementsByClassName("alert-password")[0]
+        .addEventListener("click", () => {
+          알림창다루기("비번입력하셈");
+        });
     </script>
   </body>
 </html>
