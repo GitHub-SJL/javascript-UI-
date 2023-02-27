@@ -23,6 +23,18 @@
     ></script>
   </head>
   <body>
+    <div class="modal-login black-bg-1">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <button class="btn btn-danger" id="close">닫기</button>
+      </div>
+    </div>
+    <div class="modal-login2 black-bg-2">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <button class="btn btn-danger" id="close2">닫기</button>
+      </div>
+    </div>
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
@@ -31,38 +43,52 @@
         </button>
       </div>
     </nav>
-    <ul class="list-group">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
-    </ul>
+    <div class="list">
+      <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+    </div>
 
-    <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
-    <p class="hello">안녕</p>
-    <button id="test-btn">버튼</button>
+    <div class="btn-wrap">
+      <button id="btn-login1">로그인1</button>
+      <button id="btn-login2">로그인2</button>
+    </div>
+
     <script>
-      // document.querySelector(".hello").innerHTML = "바보";
-      $(".hello").html("바보");
-      $(".hello").css("color", "red");
-      $(".hello").addClass("show");
+      const loginBtn1 = document.querySelector("#btn-login1");
+      const loginBtn2 = document.querySelector("#btn-login2");
+      const modalLogin = document.querySelector(".modal-login");
+      const modalLogin2 = document.querySelector(".modal-login2");
+      const closeBtn = document.querySelector("#close");
+      const closeBtn2 = document.querySelector("#close2");
+      const navBtn = document.querySelector(".navbar-toggler");
+      const listGroup = document.querySelector(".list-group");
+      const btnWrap = document.querySelector(".btn-wrap");
+      // 로그인1, 로그인2 버튼
 
-      // <p> 3개를 전부 바꾸려면?
-      // document.querySelectorAll(".hello")[0].innerHTML = "바보";
-      // document.querySelectorAll(".hello")[1].innerHTML = "바보";
-      // document.querySelectorAll(".hello")[2].innerHTML = "바보";
-      $(".hello").html("모두 바꾸기");
+      loginBtn1.addEventListener("click", () => {
+        modalLogin.classList.toggle("show-modal");
+      });
+      loginBtn2.addEventListener("click", () => {
+        modalLogin2.classList.toggle("show-modal");
+      });
 
-      // document.querySelector('#test-btn').addEventListener('click', ()=>{})
-      $("#test-btn").on("click", () => {});
+      closeBtn.addEventListener("click", () => {
+        modalLogin.classList.remove("show-modal");
+      });
+      closeBtn2.addEventListener("click", () => {
+        modalLogin2.classList.remove("show-modal");
+      });
 
-      document
-        .querySelectorAll(".navbar-toggler")[0]
-        .addEventListener("click", () => {
-          document.querySelectorAll(".list-group")[0].classList.toggle("show");
-        });
+      // nav
+      navBtn.addEventListener("click", () => {
+        listGroup.classList.toggle("nav-modal");
+        btnWrap.classList.toggle("btn-move");
+      });
     </script>
 
     <script
