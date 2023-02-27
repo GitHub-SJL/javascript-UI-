@@ -14,6 +14,13 @@
 
     <link rel="stylesheet" href="main.css" />
     <title>Document</title>
+    <!-- jQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <nav class="navbar navbar-light bg-light">
@@ -31,7 +38,26 @@
       <li class="list-group-item">A fourth item</li>
       <li class="list-group-item">And a fifth one</li>
     </ul>
+
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <button id="test-btn">버튼</button>
     <script>
+      // document.querySelector(".hello").innerHTML = "바보";
+      $(".hello").html("바보");
+      $(".hello").css("color", "red");
+      $(".hello").addClass("show");
+
+      // <p> 3개를 전부 바꾸려면?
+      // document.querySelectorAll(".hello")[0].innerHTML = "바보";
+      // document.querySelectorAll(".hello")[1].innerHTML = "바보";
+      // document.querySelectorAll(".hello")[2].innerHTML = "바보";
+      $(".hello").html("모두 바꾸기");
+
+      // document.querySelector('#test-btn').addEventListener('click', ()=>{})
+      $("#test-btn").on("click", () => {});
+
       document
         .querySelectorAll(".navbar-toggler")[0]
         .addEventListener("click", () => {
