@@ -67,3 +67,16 @@ body {
   position: absolute;
   bottom: -10;
 }
+
+.main-bg {
+  padding: 100px 20px;
+  background-color: lightgrey;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

@@ -25,10 +25,79 @@
   <body>
     <div class="modal-login black-bg-1">
       <div class="white-bg">
-        <h4>로그인하세요</h4>
-        <button class="btn btn-danger" id="close">닫기</button>
+        <h4>회원가입</h4>
+        <form class="login-form">
+          <div class="my-3">
+            <span class="verify hidden">아이디 4자 이상 입력하셈</span>
+            <input type="text" class="form-control input-id" />
+          </div>
+          <div class="my-3">
+            <span class="verify hidden">비밀번호 6자 이상 입력하셈</span>
+            <input type="password" class="form-control input-pw" />
+          </div>
+          <button class="submit btn btn-primary" type="button">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
       </div>
     </div>
+    <!-- form script -->
+    <script>
+      const inputContent = document.getElementsByTagName("input");
+      const submitBtn = document.querySelector(".submit");
+      const loginForm = document.querySelector(".login-form");
+      const verify = document.querySelectorAll(".verify");
+      const inputId = document.querySelector(".input-id");
+      const inputPw = document.querySelector(".input-pw");
+      let idValue = "";
+      let pwValue = "";
+
+      const postForm = (e) => {
+        for (let i = 0; i < inputContent.length; i++) {
+          if (i == 1 && inputContent[i].value.length < 6) {
+            alert("비밀번호 더 길게 입력하셈.");
+            e.stoppropagation();
+            break;
+          } else if (i == 0 && inputContent[i].value.length < 4) {
+            alert("아이디 더 길게 입력하셈");
+            e.stoppropagation();
+            break;
+          } else if (inputContent[i].value == "") {
+            alert("안녕하세요.");
+            e.stoppropagation();
+            break;
+          } else {
+            loginForm.action = "success.html";
+          }
+        }
+        loginForm.submit();
+      };
+
+      submitBtn.addEventListener("click", postForm);
+
+      inputId.addEventListener("input", () => {
+        idValue = inputId.value;
+        if (idValue.length === 0) {
+          verify[0].classList.toggle("hidden");
+        } else if (idValue.length < 4) {
+          console.log(idValue.length, "idValue");
+          verify[0].classList.replace("hidden", "show");
+        } else if (idValue.length > 4) {
+          verify[0].classList.replace("show", "hidden");
+        }
+      });
+      inputPw.addEventListener("input", () => {
+        pwValue = inputPw.value;
+        if (pwValue.length === 0) {
+          verify[1].classList.toggle("hidden");
+        } else if (pwValue.length < 6) {
+          console.log(pwValue.length, "idValue");
+          verify[1].classList.replace("hidden", "show");
+        } else if (pwValue.length > 6) {
+          verify[1].classList.replace("show", "hidden");
+        }
+      });
+    </script>
+
     <div class="modal-login2 black-bg-2">
       <div class="white-bg">
         <h4>로그인하세요</h4>
@@ -53,9 +122,11 @@
       </ul>
     </div>
 
-    <div class="btn-wrap">
-      <button id="btn-login1">로그인1</button>
-      <button id="btn-login2">로그인2</button>
+    <div class="main-bg">
+      <div class="btn-wrap">
+        <button class="btn btn-danger" id="btn-login1">회원가입</button>
+        <button class="btn btn-danger" id="btn-login2">로그인2</button>
+      </div>
     </div>
 
     <script>
