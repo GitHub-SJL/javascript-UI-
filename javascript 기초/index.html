@@ -110,6 +110,8 @@
         </button>
       </div>
     </nav>
+
+    <!-- 다크모드 JS -->
     <script>
       const badge = document.querySelector(".badge");
       let count = 0;
@@ -122,6 +124,7 @@
         }
       });
     </script>
+
     <div class="list">
       <ul class="list-group">
         <li class="list-group-item">An item</li>
@@ -139,6 +142,77 @@
       </div>
     </div>
     <div class="alert alert-danger">5초 이내 구매시 사은품 증정!</div>
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img
+            src="https://codingapple.com/wp-content/uploads/2022/02/car1.png"
+          />
+        </div>
+        <div class="slide-box">
+          <img
+            src="https://codingapple.com/wp-content/uploads/2022/02/car2.png"
+          />
+        </div>
+        <div class="slide-box">
+          <img
+            src="https://codingapple.com/wp-content/uploads/2022/02/car3.png"
+          />
+        </div>
+      </div>
+
+      <button class="slide-1">1</button>
+      <button class="slide-2">2</button>
+      <button class="slide-3">3</button>
+      <button class="slide-next">다음</button>
+      <button class="slide-prev">이전</button>
+    </div>
+
+    <!-- 슬라이드 JS -->
+    <script>
+      const slideContainer = document.querySelector(".slide-container");
+      const slide1 = document.querySelector(".slide-1");
+      const slide2 = document.querySelector(".slide-2");
+      const slide3 = document.querySelector(".slide-3");
+      const slideNext = document.querySelector(".slide-next");
+      const slidePrev = document.querySelector(".slide-prev");
+      let style = window.getComputedStyle(slideContainer);
+      let matrix = new WebKitCSSMatrix(style.transform);
+      let translateX = matrix.m41;
+      slide1.addEventListener("click", () => {
+        slideContainer.style.transform = "translateX(0vw)";
+        translateX = 0;
+      });
+      slide2.addEventListener("click", () => {
+        slideContainer.style.transform = "translateX(-100vw)";
+        translateX = -100;
+      });
+      slide3.addEventListener("click", () => {
+        slideContainer.style.transform = "translateX(-200vw)";
+        translateX = -200;
+      });
+
+      slideNext.addEventListener("click", () => {
+        if (translateX === -200) {
+          slideContainer.style.transform = `translateX(0vw)`;
+          translateX = 0;
+        } else {
+          slideContainer.style.transform = `translateX(${translateX - 100}vw)`;
+          translateX = translateX - 100;
+          console.log(translateX, "next");
+        }
+      });
+      slidePrev.addEventListener("click", () => {
+        if (translateX === 0) {
+          slideContainer.style.transform = "translateX(-200vw)";
+          translateX = -200;
+        } else {
+          slideContainer.style.transform = `translateX(${translateX + 100}vw)`;
+          translateX = translateX + 100;
+          console.log(translateX, "prev");
+        }
+      });
+    </script>
 
     <!-- 회원가입,로그인 버튼 JS -->
     <script>
@@ -151,7 +225,6 @@
       const navBtn = document.querySelector(".navbar-toggler");
       const listGroup = document.querySelector(".list-group");
       const btnWrap = document.querySelector(".btn-wrap");
-      // 로그인1, 로그인2 버튼
 
       loginBtn1.addEventListener("click", () => {
         modalLogin.classList.toggle("show-modal");
@@ -174,7 +247,7 @@
       });
     </script>
 
-    <!-- alert  -->
+    <!-- alert-event  -->
     <script>
       let alertCount = 5;
       alertGift = document.querySelector(".alert");
