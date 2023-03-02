@@ -49,3 +49,7 @@
 반복문을 통해 데이터 바인딩 <br>
 client-side rendering 방식을 통해 데이터를 서버에서 가져와서 HTML을 완성할수 있음<br> 그래서 데이터바인딩하는 방법을 배우고 있는 것
 ![image](https://user-images.githubusercontent.com/116176170/222373620-69f1b1c0-c498-4f69-a01c-4a1959db9cf9.png)
+
+## forEach 사용하여 상품 사이즈 선택 select 만들기
+
+![ezgif com-video-to-gif (5)](https://user-images.githubusercontent.com/116176170/222425470-add48440-c2ba-4c19-a939-3e114b6808a9.gif)

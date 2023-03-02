@@ -60,8 +60,71 @@
       .show {
         display: block;
       }
+      .hidden {
+        display: none;
+      }
     </style>
 
+    <!-- 상품 선택 -->
+    <form class="container my-5 form-group">
+      <p>상품 사이즈 선택</p>
+      <select class="products-category form-select mt-2">
+        <option>모자</option>
+        <option>셔츠</option>
+        <option>바지</option>
+      </select>
+      <select class="product-size form-select mt-2 hidden"></select>
+    </form>
+    <script>
+      const category = document.querySelector(".products-category");
+      const size = document.querySelector(".product-size");
+
+      var shirts = [95, 100, 105];
+      var hats = [1, 2, 3];
+      var pants = [28, 30, 32];
+
+      category.addEventListener("change", (e) => {
+        if (e.currentTarget.value === "셔츠") {
+          size.innerHTML = "";
+          shirts.forEach((item) => {
+            size.classList.remove("hidden");
+            size.insertAdjacentHTML("beforeend", `<option>${item}</option>`);
+          });
+        }
+        if (e.currentTarget.value === "모자") {
+          size.innerHTML = "";
+          hats.forEach((item) => {
+            size.classList.remove("hidden");
+            size.insertAdjacentHTML("beforeend", `<option>${item}</option>`);
+          });
+        }
+        if (e.currentTarget.value === "바지") {
+          size.innerHTML = "";
+          pants.forEach((item) => {
+            size.classList.remove("hidden");
+            size.insertAdjacentHTML("beforeend", `<option>${item}</option>`);
+          });
+        }
+      });
+    </script>
+
+    <!-- 상품 정보 -->
+    <div class="container mt-3">
+      <div class="card p-3">
+        <span class="product-name">상품명</span>
+        <span class="product-price">가격</span>
+      </div>
+    </div>
+
+    <script>
+      const car2 = { name: "소나타", price: [50000, 3000, 4000] };
+      const name = document.querySelector(".product-name");
+      const price = document.querySelector(".product-price");
+      name.innerHTML = `상품명: ${car2.name}`;
+      price.innerHTML = `가격: ${car2.price[0]}`;
+    </script>
+
+    <!-- 상품 탭 -->
     <div class="container mt-5">
       <ul class="list">
         <li class="tab-button" data-id="0">Products</li>
@@ -83,23 +146,6 @@
       </div>
     </div>
     <script src="tab.js"></script>
-
-    <div class="container mt-3">
-      <div class="card p-3">
-        <span class="product-name">상품명</span>
-        <span class="product-price">가격</span>
-      </div>
-    </div>
-
-    <script>
-      const car2 = { name: "소나타", price: [50000,3000,4000] };
-      const name = document.querySelector(".product-name"); 
-      const price = document.querySelector(".product-price"); 
-      name.innerHTML = `상품명: ${car2.name}`
-      price.innerHTML = `가격: ${car2.price[0]}`
-      
-
-    </script>
 
     <!-- 부트스트랩 -->
     <script
