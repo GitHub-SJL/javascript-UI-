@@ -305,7 +305,6 @@
         // 개인정보 동의 페이지 읽을때 진척도 UI
         const writeProgress = document.querySelector(".write-progress");
         let writeProgressHeight = (scroll / (scrollHeight - divHeight)) * 100;
-        console.log(`${writeProgressHeight.toFixed(0)}%`);
         writeProgress.style.setProperty("height", `${writeProgressHeight}%`);
       });
       const navBar = document.querySelector(".navbar");

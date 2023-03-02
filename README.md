@@ -33,3 +33,9 @@
 
 페이지 내릴 때 마다 페이지를 얼마나 읽었는지 진척도를 알려주는 UI 추가
 ![ezgif com-video-to-gif (3)](https://user-images.githubusercontent.com/116176170/222155948-edbc7fbd-0909-45c6-8b22-470874702965.gif)
+
+## 탭기능 구현하기
+
+탭버튼을 누르면 해당 내용을 보여줌
+반복문을 통해 확장성 고려
+![ezgif com-video-to-gif (4)](https://user-images.githubusercontent.com/116176170/222317876-5324b19f-d15c-4146-a6af-b71ebc83c46d.gif)
