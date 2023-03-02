@@ -84,6 +84,23 @@
     </div>
     <script src="tab.js"></script>
 
+    <div class="container mt-3">
+      <div class="card p-3">
+        <span class="product-name">상품명</span>
+        <span class="product-price">가격</span>
+      </div>
+    </div>
+
+    <script>
+      const car2 = { name: "소나타", price: [50000,3000,4000] };
+      const name = document.querySelector(".product-name"); 
+      const price = document.querySelector(".product-price"); 
+      name.innerHTML = `상품명: ${car2.name}`
+      price.innerHTML = `가격: ${car2.price[0]}`
+      
+
+    </script>
+
     <!-- 부트스트랩 -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

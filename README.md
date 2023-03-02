@@ -39,3 +39,13 @@
 탭버튼을 누르면 해당 내용을 보여줌
 반복문을 통해 확장성 고려
 ![ezgif com-video-to-gif (4)](https://user-images.githubusercontent.com/116176170/222317876-5324b19f-d15c-4146-a6af-b71ebc83c46d.gif)
+
+## 이벤트 버블링
+
+이벤트 버블링을 활용하여 탭기능의 탭의 개수와 상관없이 이벤트리스너 1개만 사용
+
+## 데이터 바인딩
+
+반복문을 통해 데이터 바인딩 <br>
+client-side rendering 방식을 통해 데이터를 서버에서 가져와서 HTML을 완성할수 있음<br> 그래서 데이터바인딩하는 방법을 배우고 있는 것
+![image](https://user-images.githubusercontent.com/116176170/222373620-69f1b1c0-c498-4f69-a01c-4a1959db9cf9.png)
