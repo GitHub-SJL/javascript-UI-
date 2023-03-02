@@ -333,6 +333,7 @@
       const modalLogin2 = document.querySelector(".modal-login2");
       const closeBtn = document.querySelector("#close");
       const closeBtn2 = document.querySelector("#close2");
+      const blackBg = document.querySelector(".black-bg-1");
       const navBtn = document.querySelector(".navbar-toggler");
       const listGroup = document.querySelector(".list-group");
       const btnWrap = document.querySelector(".btn-wrap");
@@ -349,6 +350,12 @@
       });
       closeBtn2.addEventListener("click", () => {
         modalLogin2.classList.remove("show-modal");
+      });
+
+      blackBg.addEventListener("click", (e) => {
+        if (e.target === blackBg) {
+          modalLogin.classList.remove("show-modal");
+        }
       });
 
       // nav

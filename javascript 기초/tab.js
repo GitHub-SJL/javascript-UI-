@@ -1,5 +1,6 @@
 const tabBtn = document.querySelectorAll(".tab-button");
 const tabContent = document.querySelectorAll(".tab-content");
+const tabList = document.querySelector(".list");
 
 const handleTab = (num) => {
   for (let j = 0; j < tabBtn.length; j++) {
@@ -10,8 +11,7 @@ const handleTab = (num) => {
   tabContent[num].classList.add("show");
 };
 
-for (let i = 0; i < tabBtn.length; i++) {
-  tabBtn[i].addEventListener("click", () => {
-    handleTab(i);
-  });
-}
+tabList.addEventListener("click", (e) => {
+  num = parseInt(e.target.dataset.id);
+  handleTab(num);
+});
