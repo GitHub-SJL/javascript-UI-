@@ -23,44 +23,52 @@
     ></script>
   </head>
   <body>
-    <div class="card-group container">
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card" style="margin: 0 20px">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-    </div>
+    <div class="container"><div class="row"></div></div>
 
     <script>
-      var products = [
+      const row = document.querySelector(".row");
+
+      let products = [
         { id: 0, price: 70000, title: "Blossom Dress" },
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
-      const cardBody = document.querySelectorAll(".card-body");
-      for (let i = 0; i < cardBody.length; i++) {
-        cardBody[i].children[0].textContent = products[i].title;
-        cardBody[i].children[1].textContent = products[i].price;
-      }
+      products.forEach((product) => {
+        row.insertAdjacentHTML(
+          "beforeend",
+          `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${product.title}</h5>
+          <p>가격 : ${product.price}</p>
+        </div>`
+        );
+      });
+    </script>
+
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+    <script>
+      let productNum = 0;
+      const moreBtn = document.querySelector("#more");
+      moreBtn.addEventListener("click", () => {
+        productNum += 1;
+        console.log(productNum);
+        fetch(`https://codingapple1.github.io/js/more${productNum}.json`)
+          .then((res) => res.json())
+          .then((data) =>
+            data.forEach((product) => {
+              row.insertAdjacentHTML(
+                "beforeend",
+                `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${product.title}</h5>
+          <p>가격 : ${product.price}</p>
+        </div>`
+              );
+            })
+          );
+      });
     </script>
 
     <!-- 부트스트랩 -->
