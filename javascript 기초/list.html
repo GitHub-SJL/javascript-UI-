@@ -23,6 +23,8 @@
     ></script>
   </head>
   <body>
+    <!-- 상품 더보기 -->
+
     <div class="container"><div class="row"></div></div>
 
     <script>
@@ -33,6 +35,7 @@
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
+
       products.forEach((product) => {
         row.insertAdjacentHTML(
           "beforeend",
@@ -45,19 +48,32 @@
       });
     </script>
 
+    <!-- 정렬,필터 기능 -->
     <div class="container">
-      <button class="btn btn-danger" id="more">더보기</button>
+      <button class="btn btn-danger" id="more">상품 더보기</button>
+      <button class="btn btn-danger" id="price">가격순 정렬</button>
+      <button class="btn btn-danger" id="sort1">다나가순 정렬</button>
+      <input id="filter" placeholder="가격 필터" /><button class="filter-btn">
+        검색
+      </button>
     </div>
     <script>
       let productNum = 0;
       const moreBtn = document.querySelector("#more");
+      const priceBtn = document.querySelector("#price");
+      const 다나가Btn = document.querySelector("#sort1");
+      const filterBtn = document.querySelector(".filter-btn");
+      const filterInput = document.querySelector("#filter");
+
       moreBtn.addEventListener("click", () => {
+        console.log(products);
         productNum += 1;
         console.log(productNum);
         fetch(`https://codingapple1.github.io/js/more${productNum}.json`)
           .then((res) => res.json())
-          .then((data) =>
+          .then((data) => {
             data.forEach((product) => {
+              products.push(product);
               row.insertAdjacentHTML(
                 "beforeend",
                 `<div class="col-sm-4">
@@ -66,8 +82,90 @@
           <p>가격 : ${product.price}</p>
         </div>`
               );
-            })
+            });
+          });
+      });
+
+      //  가격순 정렬
+      priceBtn.addEventListener("click", () => {
+        let newList = [...products];
+
+        newList.sort((a, b) => {
+          return a.price - b.price;
+        });
+        products = newList;
+
+        // row 초기화
+        row.innerHTML = "";
+
+        // 정렬된 데이터들로 리랜더링
+        products.forEach((product) => {
+          row.insertAdjacentHTML(
+            "beforeend",
+            `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${product.title}</h5>
+          <p>가격 : ${product.price}</p>
+        </div>`
           );
+        });
+      });
+
+      // 다나가순 정렬
+      다나가Btn.addEventListener("click", () => {
+        let newList = [...products];
+
+        newList.sort((a, b) => {
+          if (a.title < b.title) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        products = newList;
+
+        // row 초기화
+        row.innerHTML = "";
+
+        // 정렬된 데이터들로 리랜더링
+        products.forEach((product) => {
+          row.insertAdjacentHTML(
+            "beforeend",
+            `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${product.title}</h5>
+          <p>가격 : ${product.price}</p>
+        </div>`
+          );
+        });
+      });
+
+      // 가격 필터
+      let filterPrice = 0;
+      filterInput.addEventListener("input", (e) => {
+        filterPrice = parseInt(e.target.value);
+      });
+
+      filterBtn.addEventListener("click", () => {
+        const newList = products.filter((item) => {
+          return item.price <= filterPrice;
+        });
+        products = newList;
+
+        // row 초기화
+        row.innerHTML = "";
+
+        // 정렬된 데이터들로 리랜더링
+        products.forEach((product) => {
+          row.insertAdjacentHTML(
+            "beforeend",
+            `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${product.title}</h5>
+          <p>가격 : ${product.price}</p>
+        </div>`
+          );
+        });
       });
     </script>
 
